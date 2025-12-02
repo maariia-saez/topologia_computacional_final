@@ -4,7 +4,7 @@ Este repositorio contiene la implementación en Python de una librería para el 
 
 ## Funcionalidades Implementadas
 
-El proyecto se estructura en una clase principal 'SimplicialComplex' que permite modelar objetos topológicos y calcular sus invariantes algebraicos.
+El proyecto se estructura en una clase principal SimplicialComplex que permite modelar objetos topológicos y calcular sus invariantes algebraicos sin depender de librerías de TDA externas
 
 ### 1. Estructuras y Topología Básica
 - **Gestión de Complejos:** Inserción de símplices y clausura automática de caras.
@@ -19,22 +19,21 @@ El proyecto se estructura en una clase principal 'SimplicialComplex' que permite
 ### 3. Filtraciones y Complejos Geométricos
 - **Complejo de Vietoris-Rips:** Construcción eficiente del complejo a partir de nubes de puntos en $\mathbb{R}^n$, calculando distancias y cliques.
 - **Algoritmo Incremental:** Cálculo paso a paso de los cambios en la homología (nacimiento y muerte de ciclos) conforme se añaden símplices a la filtración.
-- **Alfa Complejos:** Integración con la librería 'Gudhi' para el cálculo preciso de complejos basados en diagramas de Voronoi y Delaunay.
+- **Alfa Complejos:** Implementación basada en la Triangulación de Delaunay (vía scipy.spatial) y filtración geométrica mediante el cálculo de circunradios de triángulos y aristas.
 
 ## Requisitos Técnicos
 
 Este proyecto utiliza las siguientes librerías para el cálculo numérico y geométrico:
 
 - 'numpy': Operaciones matriciales y álgebra lineal.
-- 'scipy': Cálculos espaciales (Voronoi).
+- 'scipy': Algoritmos espaciales (Delaunay, Voronoi, pdist) necesarios para la construcción geométrica de complejos.
 - 'matplotlib': Visualización de complejos simpliciales 2D.
-- 'gudhi': (Opcional) Para la generación optimizada de Alfa Complejos.
 
 ## Ejemplos de Uso
 
 El notebook principal ('TrabajoTopologia.ipynb') incluye casos de estudio prácticos:
 1. **Homología del Anillo:** Verificación topológica de un espacio con 1 agujero ($\beta_1=1$).
-2. **Análisis de Nubes de Puntos:** Detección de la topología subyacente en conjuntos de datos dispersos mediante persistencia homológica.
+2. **Análisis de Nubes de Puntos:** Detección de la topología subyacente en datos dispersos mediante la construcción de complejos de Rips y Alfa.
 
 ---
 *Proyecto en desarrollo. Próximos pasos: Implementación de homología relativa y optimización de matrices dispersas.*
