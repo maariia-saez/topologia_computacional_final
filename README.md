@@ -1,39 +1,39 @@
-# Proyecto Final: Topología Computacional y Análisis Topológico de Datos (TDA)
+# Final Project: Computational Topology and Topological Data Analysis (TDA)
 
-Este repositorio contiene la implementación en Python de una librería para el análisis y cálculo de homología simplicial, desarrollada como parte de la asignatura de Topología Computacional.
+This repository contains a Python implementation of a library for the analysis and computation of simplicial homology, developed as part of the Computational Topology course.
 
-## Funcionalidades Implementadas
+## Implemented Features
 
-El proyecto se estructura en una clase principal SimplicialComplex que permite modelar objetos topológicos y calcular sus invariantes algebraicos sin depender de librerías de TDA externas
+The project is built around a core `SimplicialComplex` class that models topological objects and computes their algebraic invariants from scratch, without relying on external TDA libraries.
 
-### 1. Estructuras y Topología Básica
-- **Gestión de Complejos:** Inserción de símplices y clausura automática de caras.
-- **Operaciones Topológicas:** Cálculo de la *Estrella* (Star) y el *Link* de un símplice.
-- **Conectividad:** Cálculo de componentes conexas ($\beta_0$) mediante estructuras de conjuntos disjuntos (Union-Find).
-- **Característica de Euler:** Cálculo del invariante topológico $\chi = \sum (-1)^k s_k$.
+### 1. Basic Structures & Topology
+- **Complex Management:** Simplex insertion with automatic face closure to ensure valid simplicial structures.
+- **Topological Operations:** Computation of the *Star* and *Link* of a simplex.
+- **Connectivity:** Calculation of connected components ($\beta_0$) using Disjoint Set Union (Union-Find) structures.
+- **Euler Characteristic:** Computation of the topological invariant $\chi = \sum (-1)^k s_k$.
 
-### 2. Álgebra Homológica
-- **Cálculo de Homología:** Implementación de la **Forma Normal de Smith** sobre $\mathbb{Z}_2$ para calcular el rango de matrices de borde.
-- **Números de Betti:** Algoritmo general para obtener $\beta_p$ (número de agujeros $p$-dimensionales) a partir de las matrices borde.
+### 2. Homological Algebra
+- **Homology Computation:** Implementation of the **Smith Normal Form** over $\mathbb{Z}_2$ to compute the rank of boundary matrices.
+- **Betti Numbers:** General algorithm to obtain $\beta_p$ (number of $p$-dimensional holes/cycles) from the boundary matrices.
 
-### 3. Filtraciones y Complejos Geométricos
-- **Complejo de Vietoris-Rips:** Construcción eficiente del complejo a partir de nubes de puntos en $\mathbb{R}^n$, calculando distancias y cliques.
-- **Algoritmo Incremental:** Cálculo paso a paso de los cambios en la homología (nacimiento y muerte de ciclos) conforme se añaden símplices a la filtración.
-- **Alfa Complejos:** Implementación basada en la Triangulación de Delaunay (vía scipy.spatial) y filtración geométrica mediante el cálculo de circunradios de triángulos y aristas.
+### 3. Filtrations & Geometric Complexes
+- **Vietoris-Rips Complex:** Efficient construction from point clouds in $\mathbb{R}^n$ by computing pairwise distances and cliques.
+- **Persistent Homology (Incremental Algorithm):** Computation of the birth and death of cycles to generate barcodes/diagrams as simplices are added to the filtration.
+- **Alpha Complexes:** Implementation based on Delaunay Triangulation (via `scipy.spatial`) and geometric filtration using triangle and edge circumradii.
 
-## Requisitos Técnicos
+## Technical Requirements
 
-Este proyecto utiliza las siguientes librerías para el cálculo numérico y geométrico:
+This project relies on the following libraries for numerical and geometric computations:
 
-- 'numpy': Operaciones matriciales y álgebra lineal.
-- 'scipy': Algoritmos espaciales (Delaunay, Voronoi, pdist) necesarios para la construcción geométrica de complejos.
-- 'matplotlib': Visualización de complejos simpliciales 2D.
+- `numpy`: Matrix operations and linear algebra.
+- `scipy`: Spatial algorithms (Delaunay, Voronoi, pdist) required for the geometric construction of complexes.
+- `matplotlib`: Visualization of 2D simplicial complexes.
 
-## Ejemplos de Uso
+## Usage Examples
 
-El notebook principal ('TrabajoTopologia.ipynb') incluye casos de estudio prácticos:
-1. **Homología del Anillo:** Verificación topológica de un espacio con 1 agujero ($\beta_1=1$).
-2. **Análisis de Nubes de Puntos:** Detección de la topología subyacente en datos dispersos mediante la construcción de complejos de Rips y Alfa.
+The main notebook (`TrabajoTopologia.ipynb`) includes practical case studies:
+1. **Annulus Homology:** Topological verification of a space with 1 hole ($\beta_1=1$).
+2. **Point Cloud Analysis:** Detection of underlying topology in scattered data through the construction of Rips and Alpha complexes.
 
 ---
-*Proyecto en desarrollo. Próximos pasos: Implementación de homología relativa y optimización de matrices dispersas.*
+*Future Work: Implementation of relative homology and sparse matrix optimization.*
